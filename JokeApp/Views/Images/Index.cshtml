@@ -1,0 +1,38 @@
+﻿@model IEnumerable<JokeApp.Models.Images>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Select An Image</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+        <div class="container">
+            <div class="row">
+
+            @foreach (var item in Model)
+            {
+                <div class="col-md-3">
+                    <div class="card border border-primary rounded" style="width: 18rem;">
+                        <a href="@Url.Action("Details", "Images", new { id = item.Id })">
+                            <img class="card-img-top img-responsive rounded" src="@String.Format("https://{0}.s3.{1}.amazonaws.com/{2}", item.BucketName, item.AwsRegion, item.ImageName )" alt="" />
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                @item.ImageName
+                            </h5>
+                            <p class="card-text">
+                                @Html.ActionLink("Details", "Details", new { id = item.Id }) -
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) -
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        </div>
+

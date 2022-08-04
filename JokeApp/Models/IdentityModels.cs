@@ -29,5 +29,7 @@ namespace JokeApp.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<JokeApp.Models.Images> Images { get; set; }
     }
 }

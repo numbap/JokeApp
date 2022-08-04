@@ -1,0 +1,48 @@
+﻿@model JokeApp.Models.Images
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Analyze Image</h2>
+
+<div class="row">
+    <div class="col-md-8">
+        <hr />
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ImageName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ImageName)
+            </dd>
+
+
+            <dt>
+                Analysis
+            </dt>
+
+            <dd>
+                <div class="alert alert-info" role="alert">
+                    @Model.Message
+                </div>
+
+            </dd>
+
+        </dl>
+
+    </div>
+    <div class="col-md-4">
+        <img src="@String.Format("https://{0}.s3.{1}.amazonaws.com/{2}", Model.BucketName, Model.AwsRegion, Model.ImageName )" class="img-responsive">
+    </div>
+
+
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+
